@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Removedor de texto em imagem</title>
+  </head>
+  <body
+    class="bg-blue-400 text-white flex flex-col items-center justify-center min-h-screen"
+  >
+    <main
+      class="w-full m-10 max-w-7xl p-10 bg-white text-black rounded-lg shadow-lg flex-grow"
+    >
+      <section class="text-center mb-10">
+        <h1 class="text-3xl font-bold mb-4">
+          Remova seu texto de qualquer imagem...
+        </h1>
+      </section>
+      <section>
+        <h3 class="text-xl mb-2">Como remover:</h3>
+        <p>
+          Basta inserir uma no formato jpg ou png e seu texto será extraído e
+          exibido na caixa ao lado
+        </p>
+      </section>
+      <section class="flex space-x-4 mt-10">
+        <form class="w-1/2" id="image-form" action="POST">
+          <label
+            for="input-upload"
+            id="label-upload"
+            class="block w-full mb-4 cursor-pointer bg-gray-200 text-center py-2 rounded"
+          >
+            Selecione uma imagem
+          </label>
+          <img
+            id="selected-image"
+            class="max-w-full h-auto hidden"
+            alt="Imagem selecionada"
+          />
+          <input
+            type="file"
+            id="input-upload"
+            accept="image/png, image/jpg"
+            class="hidden"
+          />
+          <button
+            id="button-upload"
+            type="button"
+            class="w-full bg-blue-500 text-white py-2 rounded"
+          >
+            Extrair texto
+          </button>
+        </form>
+        <textarea
+          id="extracted-text"
+          class="w-1/2 p-2 border border-gray-300 rounded"
+          rows="10"
+          placeholder="O texto extraído aparecerá aqui..."
+        ></textarea>
+      </section>
+      <section class="mt-4"></section>
+    </main>
+    <footer class="text-center mt-10 text-black">
+      desenvolvido por Leonardo Francisco Belizario -
+      <a href="https://github.com/belizario87" class="text-white underline"
+        >Github</a
+      >
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
