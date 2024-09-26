@@ -23,6 +23,10 @@ Este projeto é uma aplicação em JavaScript para extrair texto de imagens util
    - Faça upload de uma imagem através da interface web.
    - O texto extraído será exibido na tela.
 
+## EXEMPLO
+![{4738E12E-05A3-4EA7-9DBE-FF965B1CE3A8}](https://github.com/user-attachments/assets/a17816e9-5456-4fca-b567-d2639ecd88fd)
+
+
 ## Estrutura do Projeto
 
 - **app.js**: Arquivo principal que configura e inicia o servidor Express.
