@@ -41,6 +41,10 @@ app.post("/extract-text", upload.single("image"), async (req, res) => {
   }
 });
 
+app.get("/exemplo", (req, res) => {
+  res.sendFile(__dirname + "/public/exemplo.html"); // Serve a página example.html
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
