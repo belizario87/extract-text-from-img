@@ -53,7 +53,7 @@ document
         }
 
         const result = await response.json();
-        console.log("Texto recebido do backend:", result.text); // Verifique o texto extraído
+
         document.getElementById("extracted-text").value = result.text; // Coloca o texto extraído no textarea
       } catch (error) {
         console.error("Erro:", error);
@@ -64,3 +64,15 @@ document
       alert("Por favor, selecione uma imagem primeiro.");
     }
   });
+
+function copyToClipboard() {
+  var textarea = document.getElementById("extracted-text");
+  navigator.clipboard
+    .writeText(textarea.value)
+    .then(() => {
+      alert("Texto copiado para a área de transferência");
+    })
+    .catch((err) => {
+      console.error("Erro ao copiar o texto: ", err);
+    });
+}
