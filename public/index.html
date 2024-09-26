@@ -20,13 +20,14 @@
       <section>
         <h3 class="text-xl mb-2">Como remover:</h3>
         <ul class="list-disc list-inside">
-          <li class>
-            Clicar em <b>selecionar imagem</b> inserir uma imagem no formato PNG
-            ou JPG e seu texto será extraído e exibido na caixa ao lado.
+          <li>
+            Clique em <b>Selecionar imagem</b>, insira uma imagem de até 2MB no
+            formato PNG ou JPG, e o texto será extraído e exibido na caixa ao
+            lado.
           </li>
           <li>
-            O arquivo de imagem PNG ou JPG deve ser no modelo de printscreen de
-            um texto.
+            Para obter máxima precisão o arquivo de imagem PNG ou JPG deve ser
+            no modelo de printscreen de um texto.
             <a class="text-purple-500" href="http://localhost:8888/exemplo"
               >Ver exemplo.</a
             >
@@ -34,7 +35,7 @@
         </ul>
       </section>
       <section class="flex space-x-4 mt-10">
-        <form class="w-1/2" id="image-form" action="POST">
+        <form class="w-full" id="image-form" action="POST">
           <label
             for="input-upload"
             id="label-upload"
@@ -44,7 +45,7 @@
           </label>
           <img
             id="selected-image"
-            class="max-w-full h-auto hidden"
+            class="max-w-full max-h-96 hidden"
             alt="Imagem selecionada"
           />
           <input
@@ -61,12 +62,23 @@
             Extrair texto
           </button>
         </form>
-        <textarea
-          id="extracted-text"
-          class="w-1/2 p-2 border border-gray-300 rounded"
-          rows="10"
-          placeholder="O texto extraído aparecerá aqui..."
-        ></textarea>
+
+        <section class="w-1/2 flex flex-col items-center space-y-4">
+          <textarea
+            id="extracted-text"
+            class="w-full p-2 border border-gray-300 rounded"
+            rows="10"
+            placeholder="O texto extraído aparecerá aqui..."
+          ></textarea>
+          <button
+            id="button-copy"
+            type="button"
+            class="w-full bg-blue-500 text-white py-2 rounded"
+            onclick="copyToClipboard()"
+          >
+            Copiar texto
+          </button>
+        </section>
       </section>
       <section class="mt-4"></section>
     </main>
