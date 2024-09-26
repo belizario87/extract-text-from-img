@@ -2,19 +2,13 @@ const express = require("express");
 const multer = require("multer");
 const { createWorker } = require("tesseract.js");
 const fs = require("fs");
-
-// Config do express
-const app = express();
-const port = 8888;
+const app = require("./server");
 
 // Configuração do multer para upload de arquivos
 const upload = multer({ dest: "uploads/" });
 
-app.use(express.static("public"));
-
 // Rota para upload de imagem e extração de texto
 app.post("/extract-text", upload.single("image"), async (req, res) => {
-  console.log("Imagem recebida:", req.file); // Log da imagem recebida
   if (!req.file) {
     return res.status(400).send("Nenhuma imagem foi enviada.");
   }
@@ -27,24 +21,20 @@ app.post("/extract-text", upload.single("image"), async (req, res) => {
 
     const {
       data: { text },
-    } = await worker.recognize(imagePath); // Reconhecer o texto
+    } = await worker.recognize(imagePath); // variavel para o texto extraido
+    console.log("texto extraido: ", text);
 
-    console.log("Texto extraído:", text); // Log do texto extraído
-
-    await worker.terminate(); // Terminar o worker após a extração
+    await worker.terminate();
     fs.unlinkSync(imagePath); // Remove o arquivo após o processamento
 
-    res.json({ text }); // Retornar o texto extraído
+    res.json({ text });
   } catch (error) {
-    console.error("Erro ao processar a imagem:", error); // Log do erro
+    console.error("Erro ao processar a imagem:", error);
     res.status(500).send("Erro ao processar a imagem");
   }
 });
 
+//Rota para a pagina exemplo
 app.get("/exemplo", (req, res) => {
-  res.sendFile(__dirname + "/public/exemplo.html"); // Serve a página example.html
-});
-
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  res.sendFile(__dirname + "/public/exemplo.html");
 });
